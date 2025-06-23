@@ -1,0 +1,23 @@
+<mvc:View 
+controllerName="ui5.walkthrough.controller.App"
+xmlns = "sap.m"
+xmlns:mvc="sap.ui.core.mvc"
+>
+<!-- <Text text="Text from xml view" /> -->
+<Text text="{/name}" />
+<Button 
+text = "{datamodel>/recipient/name}" 
+press = ".onShowHello" 
+/>
+<!-- taking value from i18n, it does not require the backslash  -->
+<Button 
+text = "{i18n>showHelloButtonText}" 
+press = ".onShowHello" 
+/>
+
+<!-- <buttom below is just an example " /> 
+<Button 
+text = "{name1>/name}" 
+press = ".onShowHello" 
+/>-->
+</mvc:View>

@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background-color: #0d0c0b;
+    min-height: 100vh;
+    align-items: center;
+
+}
+
+.container {
+    text-align: center;
+    padding: 1em;
+    background-image: linear-gradient(45deg, #263653, #249d8f);
+    border-radius: 15px;
+    box-shadow: 0 0 100px rgb(53, 53, 53);
+    min-height: 20em;
+    min-width: 30em;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+input[type="text"] {
+    width: 350px;
+    padding: 12px 20px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: 0.3s ease;
+    outline: none;
+}
+
+input[type="text"]:focus {
+    border-color: #1b1b1b;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+input[type="submit"] {
+    width: 100px;
+    height: 49px;
+    margin-top: 20px;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+input[type="submit"]:hover  {
+    background-color: #101010;
+    color: white;
+    transition: 0.25s;
+}
+
+table {
+    border-color: #0d0c0b;
+    border-collapse: collapse;
+}
+
+.serialNo {
+    min-width: 50px;
+}
+
+.task {
+    min-width: 250px;
+}
+
+.action {
+    min-width: 150px;
+}
