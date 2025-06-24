@@ -10,6 +10,17 @@
 		<ObjectHeader
 			intro="{invoice>ShipperName}"
 			title="{invoice>ProductName}" />
-		<Text text="{invoice>CustomerName}" />
+		<VBox class="sapUiLargeMargin">
+			<Text text="Buyer Name: {invoice>CustomerName}" />
+			<Text
+				text="{
+				path: 'invoice>ShippedDate',
+				type: 'sap.ui.model.type.Date',
+				formatOptions: { pattern: 'dd MMM yyyy' }
+			}" />
+			<Text text="Shipper Name: {invoice>ShipperName}" />
+			<Text text="Extended Price: {invoice>ExtendedPrice}" />
+		</VBox>
+
 	</Page>
 </mvc:View>

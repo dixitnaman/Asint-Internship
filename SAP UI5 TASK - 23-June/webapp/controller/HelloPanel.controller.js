@@ -10,7 +10,7 @@ sap.ui.define(
           .getText("showHelloButtonText");
         console.log(i18text);
 
-        MessageToast.show("Meow", {
+        MessageToast.show("Message Display", {
           duration: 3000,
           my: sap.ui.core.Popup.Dock.CenterBottom,
           at: sap.ui.core.Popup.Dock.CenterBottom,
@@ -25,7 +25,6 @@ sap.ui.define(
       },
 
       async onCloseDialog() {
-        // new JSONModel({ name: "Hello" });
         this.byId("helloDialog").close();
       },
     });

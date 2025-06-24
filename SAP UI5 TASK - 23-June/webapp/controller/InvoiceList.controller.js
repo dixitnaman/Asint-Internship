@@ -31,8 +31,6 @@ sap.ui.define(
       onPress(oEvent) {
         const oRouter = this.getOwnerComponent().getRouter();
         const oItem = oEvent.getSource();
-        console.log(oItem.getBindingContext("invoice").getPath());
-        console.log(oItem.getBindingContext("invoice").getPath().substring(1));
         oRouter.navTo("detail", {
           invoicePath: window.encodeURIComponent(
             oItem.getBindingContext("invoice").getPath().substring(1)
