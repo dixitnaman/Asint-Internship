@@ -1,18 +1,18 @@
-specVersion: "4.0"
+specVersion: '2.6'
 metadata:
-  name: sap-ui5-walkthrough
+  name: ui5
 type: application
 framework:
-  name: OpenUI5
-  version: "1.136.1"
+  name: SAPUI5
+  version: "1.98.0"
   libraries:
     - name: sap.m
     - name: sap.ui.core
-    - name: themelib_sap_horizon
+    - name: themelib_sap_belize
 server:
   customMiddleware:
   - name: ui5-middleware-simpleproxy
+    mountPath: /employee_service/v2/employee
     afterMiddleware: compression
-    mountPath: /V2
     configuration:
-      baseUri: "https://services.odata.org"
+      baseUri: http://localhost:4004/v2/employee

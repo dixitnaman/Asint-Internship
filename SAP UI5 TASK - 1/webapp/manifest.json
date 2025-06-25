@@ -1,94 +1,108 @@
 {
-  "_version": "1.65.0",
+  "_version": "1.12.0",
   "sap.app": {
-	"id": "ui5.walkthrough",
-	"i18n": "i18n/i18n.properties",
-	"title": "{{appTitle}}",
-	"description": "{{appDescription}}",
-	"type": "application",
-	"applicationVersion": {
-	  "version": "1.0.0"
-	},
-	"dataSources": {
-		"invoiceRemote": {
-			"uri": "V2/Northwind/Northwind.svc/",
-			"type": "OData",
-			"settings": {
-				"odataVersion": "2.0"
-			}
-		}
-	}
+    "id": "ui5.app",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "title": "{{pageTitle}}",
+    "description": "{{description}}",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "dataSources": {
+      "tableData": {
+        "uri": "./data/data.json",
+        "type": "JSON"
+      },
+      "employee_service": {
+        "uri": "/employee_service/v2/employee",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0"
+        }
+      }
+    }
   },
   "sap.ui": {
-	"technology": "UI5",
-	"deviceTypes": {
-		"desktop": true,
-		"tablet": true,
-		"phone": true
-	}
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "phone": true,
+      "tablet": true
+    }
+
   },
   "sap.ui5": {
-	"dependencies": {
-	  "minUI5Version": "1.108.0",
-	  "libs": {
-		"sap.ui.core": {},
-		"sap.m": {}
-	  }
-	},
-	"models": {
-	  "i18n": {
-		"type": "sap.ui.model.resource.ResourceModel",
-		"settings": {
-		  "bundleName": "ui5.walkthrough.i18n.i18n",
-		  "supportedLocales": [""],
-		  "fallbackLocale": ""
-		}
-	  },
-		"invoice": {
-			"dataSource": "invoiceRemote"
+    "rootView": {
+      "viewName": "ui5.app.view.App",
+      "type": "XML",
+      "id": "app"
+    },
+    "dependencies": {
+      "minVersion": "1.93",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
       }
-	},
-	"rootView": {
-		"viewName": "ui5.walkthrough.view.App",
-		"type": "XML",
-		"id": "app"
-	},
-	"resources": {
-	  "css": [
-		{
-		  "uri": "css/style.css"
-		}
-	  ]
-	},
-	"routing": {
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "ui5.app.i18n.i18n",
+          "supportedLocales": [""],
+          "fallbackLocale": ""
+        }
+      },
+      "employee": {
+        "type": "sap.ui.model.json.JSONModel",
+        "dataSource": "tableData"
+      },
+      "": {
+        "dataSource": "employee_service",
+        "settings": {
+          "defaultBindingMode": "TwoWay"
+        }
+      }
+    },
+    "routing": {
       "config": {
         "routerClass": "sap.m.routing.Router",
-        "type": "View",
-        "viewType": "XML",
-        "path": "ui5.walkthrough.view",
+        "viewPath": "ui5.app.view",
         "controlId": "app",
-        "controlAggregation": "pages"
+        "controlAggregation": "pages",
+        "viewType": "XML"
       },
-      "routes": [
-        {
+      "routes": [{
           "pattern": "",
-          "name": "overview",
-          "target": "overview"
+          "name": "initial",
+          "target": ["landing_page"]
         },
         {
-          "pattern": "detail/{invoicePath}",
-          "name": "detail",
-          "target": "detail"
+           "pattern": "create",
+           "name": "createWithoutIndex",
+           "target": ["create"]
+        },
+        {
+          "pattern": "create/{index}",
+          "name": "create",
+          "target": ["create"]
+        },
+        {
+          "pattern": "display/{employeeid}",
+          "name": "display",
+          "target": ["display"]
         }
       ],
       "targets": {
-        "overview": {
-          "id": "overview",
-          "name": "Overview"
+        "landing_page": {
+          "viewName": "LandingPage"
         },
-        "detail": {
-          "id": "detail",
-          "name": "Detail"
+        "create": {
+          "viewName": "Create"
+        },
+        "display": {
+          "viewName": "Display"
         }
       }
     }

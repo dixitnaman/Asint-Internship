@@ -1,37 +1,35 @@
-sap.ui.define(
-  [
-    "sap/ui/core/UIComponent",
-    "sap/ui/model/json/JSONModel",
-    "sap/ui/model/resource/ResourceModel",
-  ],
-  (UIComponent, JSONModel, ResourceModel) => {
-    "use strict";
+sap.ui.define([
+  'sap/ui/core/UIComponent',
+  'sap/ui/model/json/JSONModel',
+  'sap/ui/model/BindingMode'
+], function (UIComponent, JSONModel, BindingMode) {
+  'use strict';
 
-    return UIComponent.extend("ui5.walkthrough.Component", {
-      metadata: {
-        interfaces: ["sap.ui.core.IAsyncContentCreation"],
-        manifest: "json",
-      },
-      init() {
-        UIComponent.prototype.init.apply(this, arguments);
-        const oData = {
-          recipient: {
-            name: "Naman",
-          },
-        };
-        const data = new JSONModel(oData);
-        this.setModel(data);
+  return UIComponent.extend("ui5.app.Component", {
+    metadata: {
+      interfaces: ["sap.ui.core.IAsyncContentCreation"],
+      manifest: "json"
+    },
 
-        //set i18a model on view
-        const i18nModel = new ResourceModel({
-          bundleName: "ui5.walkthrough.i18n.i18n",
-        });
+    init: function () {
+      UIComponent.prototype.init.apply(this, arguments);
 
-        this.setModel(i18nModel, "i18n");
+      var oData = {
+        employee: {
+          firstName: "",
+          lastName: "",
+          age: "",
+          salary: "",
+          email: ""
+        },
+        employees: []
+      };
 
-        //create views based on url
-        this.getRouter().initialize();
-      },
-    });
-  }
-);
+      var oModel = new JSONModel(oData);
+      oModel.setDefaultBindingMode(BindingMode.TwoWay);
+      this.setModel(oModel, "empModel");
+
+      this.getRouter().initialize();
+    }
+  });
+});
