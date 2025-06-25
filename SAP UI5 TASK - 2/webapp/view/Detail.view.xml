@@ -1,0 +1,33 @@
+<mvc:View
+	controllerName="ui5.walkthrough.controller.Detail"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:wt="ui5.walkthrough.control">
+
+	<Page
+		title="{i18n>detailPageTitle}"
+		showNavButton="true"
+		navButtonPress=".onNavBack"
+	>
+		<ObjectHeader
+			intro="{invoice>ShipperName}"
+			title="{invoice>ProductName}" />
+		<VBox class="sapUiLargeMarginBegin">
+			<Text text="Buyer Name: {invoice>CustomerName}" />
+			<Text
+				text="{
+				path: 'invoice>ShippedDate',
+				type: 'sap.ui.model.type.Date',
+				formatOptions: { pattern: 'dd MMM yyyy' }
+			}" />
+			<Text text="Shipper Name: {invoice>ShipperName}" />
+			<Text text="Extended Price: {invoice>ExtendedPrice}" />
+			<Text text="Contact Title: {invoice>ContactTitle}" />
+		</VBox>
+		<wt:ProductRating 
+			id="rating"
+			class="sapUiMediumMarginBegin"
+			change=".onRatingChange" />
+
+	</Page>
+</mvc:View>
