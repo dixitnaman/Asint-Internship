@@ -3,8 +3,9 @@ sap.ui.define(
     "sap/ui/core/UIComponent",
     "sap/ui/model/json/JSONModel",
     "sap/ui/model/resource/ResourceModel",
+    "sap/ui/Device",
   ],
-  (UIComponent, JSONModel, ResourceModel) => {
+  (UIComponent, JSONModel, ResourceModel, Device) => {
     "use strict";
 
     return UIComponent.extend("ui5.walkthrough.Component", {
@@ -28,6 +29,10 @@ sap.ui.define(
         });
 
         this.setModel(i18nModel, "i18n");
+
+        const oDeviceModel = new JSONModel(Device);
+        oDeviceModel.setDefaultBindingMode("OneWay");
+        this.setModel(oDeviceModel, "device");
 
         //create views based on url
         this.getRouter().initialize();

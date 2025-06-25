@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-mock": "ui5 serve -o test/mockServer.html",
     "start": "ui5 serve -o index.html"
   },
   "keywords": [],
