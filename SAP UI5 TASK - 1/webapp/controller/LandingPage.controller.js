@@ -2,7 +2,6 @@ sap.ui.define(
   [
     "./BaseController.controller",
     "sap/m/MessageToast",
-    "sap/ui/core/ValueState",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
     "sap/ui/model/Sorter",
@@ -10,7 +9,6 @@ sap.ui.define(
   function (
     Controller,
     MessageToast,
-    ValueState,
     Filter,
     FilterOperator,
     Sorter
@@ -21,16 +19,6 @@ sap.ui.define(
       onPress() {
         var message = this.getModel().getProperty("/message");
         MessageToast.show(message);
-      },
-
-      formatScoreState(iState) {
-        if (iState > 80) {
-          return ValueState.Success;
-        } else if (iState > 60) {
-          return ValueState.Warning;
-        } else {
-          return ValueState.Error;
-        }
       },
 
       formatName(sFname, sLname) {
@@ -59,37 +47,31 @@ sap.ui.define(
         oBinding.filter(oFilter);
       },
 
-      // openSettings() {
-      //   if (!this.employeeSettings) {
-      //     this.employeeSettings = this.loadFragment({
-      //       name: "ui5.app.fragment.EmployeeSettings",
-      //     });
-      //   }
+      openSettings() {
+        if (!this.employeeSettings) {
+          this.employeeSettings = this.loadFragment({
+            name: "ui5.app.fragment.EmployeeSettings",
+          });
+        }
 
-      //   this.employeeSettings.then(function (oDialog) {
-      //     oDialog.open();
-      //   });
-      // },
+        this.employeeSettings.then(function (oDialog) {
+          oDialog.open();
+        });
+      },
 
-      // applySettings(oEvt) {
-      //   var sortItem = oEvt.getParameter("sortItem"),
-      //     groupItem = oEvt.getParameter("groupItem"),
-      //     sortDesc = oEvt.getParameter("sortDescending"),
-      //     groupDesc = oEvt.getParameter("groupDescending"),
-      //     oTable = this.byId("employeeTable"),
-      //     oBinding = oTable.getBinding("items"),
-      //     aSorters = [];
+      applySettings(oEvt) {
+        var sortItem = oEvt.getParameter("sortItem"),
+          sortDesc = oEvt.getParameter("sortDescending"),
+          oTable = this.byId("employeeTable"),
+          oBinding = oTable.getBinding("items"),
+          aSorters = [];
 
-      //   if (sortItem) {
-      //     aSorters.push(new Sorter(sortItem.getKey(), sortDesc));
-      //   }
+        if (sortItem) {
+          aSorters.push(new Sorter(sortItem.getKey(), sortDesc));
+        }
 
-      //   if (groupItem) {
-      //     aSorters.push(new Sorter(groupItem.getKey(), groupDesc, true));
-      //   }
-
-      //   oBinding.sort(aSorters);
-      // },
+        oBinding.sort(aSorters);
+      },
 
       createEmployee() {
         this.getRouter().navTo("createWithoutIndex");
@@ -108,7 +90,7 @@ sap.ui.define(
         const oContext = oEvent.getSource().getBindingContext("empModel");
         const sPath = oContext.getPath(); // "/employees/0"
         const iIndex = sPath.split("/")[2]; // "0"
-        this.getRouter().navTo("create", { index: iIndex }); // ✅ MUST use "create/{index}"
+        this.getRouter().navTo("create", { index: iIndex }); // MUST use "create/{index}"
       },
 
       onDeleteEmployee(oEvent) {

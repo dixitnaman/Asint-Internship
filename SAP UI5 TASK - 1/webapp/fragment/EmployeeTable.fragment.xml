@@ -1,13 +1,14 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
-  <SearchField search="searchEmployee" />
+  
 
-  <Table id="employeeTable" items="{empModel>/employees}" growing="true">
+  <Table id="employeeTable" items="{empModel>/employees}" growing="true" class="sapUiLargeMarginTop">
     <headerToolbar>
       <Toolbar>
         <Title text="Employees" />
         <ToolbarSpacer />
+        <SearchField search="searchEmployee" width="50%"/>
         <Button icon="sap-icon://add" text="{i18n>create}" press="createEmployee" />
-        <!-- <Button icon="sap-icon://settings" press="openSettings"/> -->
+        <Button icon="sap-icon://settings" text="Sorting and Grouping" press="openSettings"/>
       </Toolbar>
     </headerToolbar>
 
@@ -33,11 +34,10 @@
         <Text text="{empModel>age}" />
         <Text text="{empModel>salary}" />
 
-        <!-- ✅ Action buttons -->
         <HBox>
           <Button icon="sap-icon://edit" text="Edit" press="onEditEmployee" tooltip="Edit" />
           <Button icon="sap-icon://delete" text="Delete" press="onDeleteEmployee" tooltip="Delete"
-            type="Reject" />
+            class="sapUiSmallMarginBegin" type="Reject" />
         </HBox>
       </ColumnListItem>
     </items>

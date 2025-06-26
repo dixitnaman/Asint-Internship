@@ -10,9 +10,5 @@
       <ViewSettingsItem text="Age" key="age"/>
     </sortItems>
 
-    <groupItems>
-      <ViewSettingsItem text="Age" key="age"/>
-    </groupItems>
-
   </ViewSettingsDialog>
 </core:FragmentDefinition>
