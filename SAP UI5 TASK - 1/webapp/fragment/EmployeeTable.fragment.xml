@@ -6,9 +6,9 @@
       <Toolbar>
         <Title text="Employees" />
         <ToolbarSpacer />
-        <SearchField search="searchEmployee" width="50%"/>
+        <SearchField search="searchEmployee" width="35%"/>
         <Button icon="sap-icon://add" text="{i18n>create}" press="createEmployee" />
-        <Button icon="sap-icon://settings" text="Sorting and Grouping" press="openSettings"/>
+        <Button icon="sap-icon://settings" text="Sorting" press="openSettings"/>
       </Toolbar>
     </headerToolbar>
 

@@ -6,9 +6,9 @@ sap.ui.define([
 
   return Controller.extend("ui5.app.controller.Create", {
     onInit() {
-      const oRouter = this.getRouter();
-      oRouter.getRoute("create").attachPatternMatched(this._onPatternMatched, this);
-      oRouter.getRoute("createWithoutIndex").attachPatternMatched(this._onPatternMatched, this);
+      const oRouter = this.getRouter(); //tab call hota hai: Jab controller initialize hota hai.
+      oRouter.getRoute("create").attachPatternMatched(this._onPatternMatched, this); 
+      oRouter.getRoute("createWithoutIndex").attachPatternMatched(this._onPatternMatched, this);//Router ke "create" aur "createWithoutIndex" routes pe listener lagata hai.
     },
 
     _onPatternMatched(oEvent) {
