@@ -20,7 +20,6 @@ sap.ui.define([
           lastName: "",
           age: "",
           salary: "",
-          email: ""
         },
         employees: []
       };

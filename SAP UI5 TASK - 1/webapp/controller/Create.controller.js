@@ -5,18 +5,17 @@ sap.ui.define([
   'use strict';
 
   return Controller.extend("ui5.app.controller.Create", {
-    onInit: function () {
+    onInit() {
       const oRouter = this.getRouter();
       oRouter.getRoute("create").attachPatternMatched(this._onPatternMatched, this);
       oRouter.getRoute("createWithoutIndex").attachPatternMatched(this._onPatternMatched, this);
     },
 
-    _onPatternMatched: function (oEvent) {
+    _onPatternMatched(oEvent) {
       const oModel = this.getModel("empModel");
       const sIndex = oEvent.getParameter("arguments").index;
       const oView = this.getView();
       const oTitle = oView.byId("formTitle");
-      const oEmailInput = oView.byId("emailField");
 
       if (sIndex !== undefined && sIndex !== null && sIndex !== "") {
         this._editIndex = parseInt(sIndex);
@@ -24,7 +23,6 @@ sap.ui.define([
         if (oEmployee) {
           oModel.setProperty("/employee", { ...oEmployee });
           if (oTitle) oTitle.setText("Edit Employee");
-          if (oEmailInput) oEmailInput.setEnabled(false);
         } else {
           MessageToast.show("Employee not found.");
           this.getRouter().navTo("landing_page");
@@ -35,21 +33,18 @@ sap.ui.define([
           firstName: "",
           lastName: "",
           age: "",
-          salary: "",
-          email: "",
-          city: ""
+          salary: ""
         });
         if (oTitle) oTitle.setText("Create New Employee");
-        if (oEmailInput) oEmailInput.setEnabled(true);
       }
     },
 
-    onSave: function () {
+    onSave() {
       const oModel = this.getModel("empModel");
       const oEmployee = oModel.getProperty("/employee");
       const aEmployees = oModel.getProperty("/employees") || [];
 
-      if (!oEmployee.firstName || !oEmployee.lastName || !oEmployee.email) {
+      if (!oEmployee.firstName || !oEmployee.lastName) {
         MessageToast.show("Please fill all required fields.");
         return;
       }
@@ -67,16 +62,14 @@ sap.ui.define([
         firstName: "",
         lastName: "",
         age: "",
-        salary: "",
-        email: "",
-        city: ""
+        salary: ""
       });
 
       this._editIndex = null;
       this.getRouter().navTo("landing_page");
     },
 
-    onCancel: function () {
+    onCancel() {
       this.getRouter().navTo("landing_page");
     }
   });

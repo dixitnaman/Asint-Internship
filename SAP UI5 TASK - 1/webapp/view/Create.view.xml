@@ -12,8 +12,6 @@
     <Input type="Number" value="{empModel>/employee/age}"/>
     <Label text="Salary"/>
     <Input type="Number" value="{empModel>/employee/salary}"/>
-    <Label text="Email"/>
-    <Input id="emailField" value="{empModel>/employee/email}"/>
     <HBox class="sapUiSmallMarginTop">
       <Button type="Accept" text="Save" press="onSave"/>
       <Button type="Reject" text="Cancel" press="onCancel" class="sapUiTinyMarginBegin"/>

@@ -1,35 +1,43 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
-  <SearchField search="searchEmployee"/>
+  <SearchField search="searchEmployee" />
 
   <Table id="employeeTable" items="{empModel>/employees}" growing="true">
     <headerToolbar>
       <Toolbar>
-        <Title text="Employees"/>
-        <ToolbarSpacer/>
-        <Button icon="sap-icon://add" text="{i18n>create}" press="createEmployee"/>
-        <Button icon="sap-icon://settings" press="openSettings"/>
+        <Title text="Employees" />
+        <ToolbarSpacer />
+        <Button icon="sap-icon://add" text="{i18n>create}" press="createEmployee" />
+        <!-- <Button icon="sap-icon://settings" press="openSettings"/> -->
       </Toolbar>
     </headerToolbar>
 
     <columns>
-      <Column><Label text="Email"/></Column>
-      <Column><Label text="Name"/></Column>
-      <Column><Label text="Age"/></Column>
-      <Column><Label text="Salary"/></Column>
-      <Column><Label text="Actions"/></Column> <!-- ✅ New column -->
+      <Column>
+        <Label text="Name" />
+      </Column>
+      <Column>
+        <Label text="Age" />
+      </Column>
+      <Column>
+        <Label text="Salary" />
+      </Column>
+      <Column>
+        <Label text="Actions" />
+      </Column>
     </columns>
 
     <items>
       <ColumnListItem>
-        <Text text="{empModel>email}"/>
-        <Text text="{parts:[{path:'empModel>firstName'},{path:'empModel>lastName'}], formatter:'.formatName'}"/>
-        <Text text="{empModel>age}"/>
-        <Text text="{empModel>salary}"/>
+        <Text
+          text="{parts:[{path:'empModel>firstName'},{path:'empModel>lastName'}], formatter:'.formatName'}" />
+        <Text text="{empModel>age}" />
+        <Text text="{empModel>salary}" />
 
         <!-- ✅ Action buttons -->
         <HBox>
-          <Button icon="sap-icon://edit" press="onEditEmployee" tooltip="Edit" />
-          <Button icon="sap-icon://delete" press="onDeleteEmployee" tooltip="Delete" type="Reject" />
+          <Button icon="sap-icon://edit" text="Edit" press="onEditEmployee" tooltip="Edit" />
+          <Button icon="sap-icon://delete" text="Delete" press="onDeleteEmployee" tooltip="Delete"
+            type="Reject" />
         </HBox>
       </ColumnListItem>
     </items>

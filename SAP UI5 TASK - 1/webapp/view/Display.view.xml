@@ -8,8 +8,6 @@
           <Input type="Number" value="{age}"/>
           <Label text="Salary"/>
           <Input type="Number" value="{salary}"/>
-          <Label text="Email"/>
-          <Input type="Text" value="{email}"/>
      </VBox> 
      <Button type="Accept" text='Save Employee' press='onSave'></Button>
      <Button type="Reject" text="Delete Employee" press="onDelete"></Button>

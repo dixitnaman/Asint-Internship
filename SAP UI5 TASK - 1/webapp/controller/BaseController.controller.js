@@ -3,16 +3,16 @@ sap.ui.define([
 ], function (Controller) {
   'use strict';
   return Controller.extend("ui5.app.controller.BaseController", {
-    getModel: function (sModelName) {
+    getModel(sModelName) {
       return this.getOwnerComponent().getModel(sModelName);
     },
-    setModel: function (oModel, sModelName) {
+    setModel(oModel, sModelName) {
       this.getOwnerComponent().setModel(oModel,sModelName);
     },
-    getResourceBundle : function() {
+    getResourceBundle() {
       return this.getOwnerComponent().getModel("i18n").getResourceBundle();
     },
-    getRouter : function(){
+    getRouter(){
       return this.getOwnerComponent().getRouter();
     }
   });
